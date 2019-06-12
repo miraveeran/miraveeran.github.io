@@ -21,8 +21,9 @@ background-size: cover;
  }
 
 </style>
-
-<canvas id="myCanvas" width="450px" height="450px"></canvas>
+<img id="wheel" style="display:none" src="http://pngimg.com/uploads/car_wheel/car_wheel_PNG23316.png" alt="wheelball">
+<img id="car" style="display:none" src="racecar.png" alt="racecar">
+<canvas id="myCanvas" width="500px" height="500px"></canvas>
 <script>
 
 var canvas = document.getElementById("myCanvas");
@@ -74,7 +75,7 @@ function collisionDetection() {
 					score++
 					if(score == brickRowCount*brickColumnCount) {
 						alert("You Win, Congratulations!");
-						document.location.replace("index.html");
+						document.location.replace(index.html);
 
 					}
                 }
@@ -127,8 +128,7 @@ function keyUpHandler(e) {
 function drawBall() {
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-    ctx.fillStyle = "#ffa544";
-    ctx.fill();
+    ctx.drawImage(document.getElementById("wheel"), x, y, 30, 30)
     ctx.closePath();
 }
 
@@ -150,9 +150,10 @@ function drawBricks() {
                 bricks[c][r].y = brickY;
                 ctx.beginPath();
                 ctx.rect(brickX, brickY, brickWidth, brickHeight);
-                ctx.fillStyle = "#00b506";
+                ctx.fillStyle = "#ffffff";
                 ctx.fill();
                 ctx.closePath();
+                ctx.drawImage(document.getElementById("car"), brickX, brickY, brickWidth, brickHeight);
             }
         }
     }
@@ -181,7 +182,7 @@ function draw() {
             lives--;
 			if (!lives) {
 				alert ("Game Over");
-				document.location.replace("index.html");
+				document.location.replace(index.html);
 
 			}
 			else {
