@@ -23,6 +23,8 @@ background-size: cover;
 </style>
 
 <canvas id="myCanvas" width="300px" height="300px"></canvas>
+<img id="yarn" style="display:none" src="https://s3.amazonaws.com/peoplepng/wp-content/uploads/2018/08/16130449/Yarn-PNG-Image-Background-964x1024.png" alt="Yarn Ball">
+<img id="catlay" style="display:none" src="catlay.jpg" alt="Cat">
 <script>
 
 var canvas = document.getElementById("myCanvas");
@@ -127,8 +129,7 @@ function keyUpHandler(e) {
 function drawBall() {
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-    ctx.fillStyle = "#ffffff";
-    ctx.fill();
+    ctx.drawImage(document.getElementById("yarn"), x, y, 40, 40)
     ctx.closePath();
 }
 
@@ -153,6 +154,7 @@ function drawBricks() {
                 ctx.fillStyle = "#d6380c";
                 ctx.fill();
                 ctx.closePath();
+                ctx.drawImage(document.getElementById("catlay"), brickX, brickY, brickWidth, brickHeight);
             }
         }
     }
@@ -181,7 +183,7 @@ function draw() {
             lives--;
 			if (!lives) {
 				alert ("Game Over");
-				document.location.replace("index.html");
+							document.location.replace("index.html");
 
 			}
 			else {
@@ -214,3 +216,4 @@ draw();
 
 </body>
 </html>
+
